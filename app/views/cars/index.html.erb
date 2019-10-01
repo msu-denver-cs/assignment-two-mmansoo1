@@ -30,4 +30,10 @@
 
 <br>
 
+<%= form_tag(search_cars_url, method: "get")do %>
+  <%= label_tag(:query, "Search for car(s):") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <%= link_to 'New Car', new_car_path %>

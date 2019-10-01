@@ -25,7 +25,7 @@
 <br>
 
 <%= form_tag(search_parts_url, method: "get")do %>
-  <%= label_tag(:query, "Search for part:") %>
+  <%= label_tag(:query, "Search for part(s):") %>
   <%= text_field_tag(:query) %>
   <%= submit_tag("Search") %>
 <% end %>

@@ -14,7 +14,7 @@ class PartsTest < ApplicationSystemTestCase
     visit parts_url
     click_on "New Part"
 
-    fill_in "Name", with: @part.name
+    fill_in "Part", with: @part.part
     click_on "Create Part"
 
     assert_text "Part was successfully created"
@@ -25,7 +25,7 @@ class PartsTest < ApplicationSystemTestCase
     visit parts_url
     click_on "Edit", match: :first
 
-    fill_in "Name", with: @part.name
+    fill_in "Part", with: @part.part
     click_on "Update Part"
 
     assert_text "Part was successfully updated"

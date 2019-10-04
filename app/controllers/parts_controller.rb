@@ -1,11 +1,6 @@
 class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy]
 
-  def search
-    @parts = Part.where('name like ?', "%#{params[:query]}%")
-    render :index
-  end
-
   # GET /parts
   # GET /parts.json
   def index
@@ -76,6 +71,6 @@ class PartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def part_params
-      params.require(:part).permit(:name, :car_ids => [])
+      params.require(:part).permit(:part)
     end
 end

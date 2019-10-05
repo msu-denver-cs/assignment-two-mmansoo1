@@ -26,4 +26,10 @@
 
 <br>
 
+<%= form_tag(search_makes_url, method: "get")do %>
+  <%= label_tag(:query, "Search for make(s)") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <%= link_to 'New Make', new_make_path %>

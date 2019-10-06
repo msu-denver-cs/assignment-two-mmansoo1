@@ -2,10 +2,10 @@
 
 one:
   model: MyString
-  vin: 1
+  vin: 12345678910
   make: one
 
 two:
   model: MyString
-  vin: 1
+  vin: 12345678910
   make: two

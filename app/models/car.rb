@@ -3,6 +3,5 @@ class Car < ApplicationRecord
   has_and_belongs_to_many :parts
 
   validates :model, presence: true, length: { minimum: 2 }
-  validates :vin, presence: true, length: { minimum: 11 }, numericality: true
-  validates :parts, acceptance: true
+  validates :vin, presence: true, numericality: true, length: { minimum: 11}
 end

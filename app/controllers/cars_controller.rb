@@ -1,7 +1,7 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
-  def search 
+  def search
     @cars = Car.where('make like ?', "%#{params[:query]}%")
     render :index
   end
@@ -76,6 +76,6 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def car_params
-    params.require(:car).permit(:model, :vin, :make_id, :part_ids => [])
+    params.require(:car).permit(:model, :vin, :make_id, part_ids: [])
   end
 end

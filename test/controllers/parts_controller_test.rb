@@ -5,6 +5,44 @@ class PartsControllerTest < ActionDispatch::IntegrationTest
     @part = parts(:one)
   end
 
+  test 'should find part' do
+    get search_parts_url, params: { search: 'MyString' }.length == 1
+  end
+
+  test 'search returns 200' do
+    get search_parts_url, params: { search: 'MyString' }
+    assert_equal 200, status
+  end
+
+  test 'should find engine' do
+    get search_parts_url, params: { search: 'Engine' }
+    assert_select 'td', 'Engine'
+  end
+
+  test 'empty part' do
+    p = Part.create({ part: '' })
+    refute p.valid?
+    refute p.save
+    assert_equal({ part: ["can't be blank", 'is too short (minimum is 3 characters)'] },
+                  p.errors.messages)
+  end
+
+  test 'part with one letter' do
+    p = Part.create({ part: 'e' })
+    refute p.valid?
+    refute p.save
+    assert_equal({ part: ['is too short (minimum is 3 characters)'] },
+                 p.errors.messages)
+  end
+
+  test 'part with two letters' do
+    p = Part.create({ part: 'en' })
+    refute p.valid?
+    refute p.save
+    assert_equal({ part: ['is too short (minimum is 3 characters)'] },
+                 p.errors.messages)
+  end
+
   test "should get index" do
     get parts_url
     assert_response :success

@@ -32,7 +32,8 @@
 
 <%= form_tag(search_makes_url, method: "get")do %>
   <%= label_tag(:query, "Search for make(s)") %>
-  <%= text_field_tag(:query) %>
+  <%= text_field_tag(:query, params[:query], data: { autocomplete:
+  autocomplete_car_make_cars_path } ) %>
   <%= submit_tag("Search") %>
 <% end %>
 

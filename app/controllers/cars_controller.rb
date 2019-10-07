@@ -1,6 +1,8 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
+  autocomplete :car, :make_id, full_search: true
+
   def search
     @cars = Car.where('make like ?', "%#{params[:query]}%")
     render :index

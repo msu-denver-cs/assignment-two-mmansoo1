@@ -1,6 +1,8 @@
 class MakesController < ApplicationController
   before_action :set_make, only: [:show, :edit, :update, :destroy]
 
+  autocomplete :make, :make, full_search: true
+
   def search
     @makes = Make.where('make like ?', "%#{params[:query]}%")
     render :index
